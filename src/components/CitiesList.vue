@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul @click="" v-bind:key="index" v-for="(city, index) in cities">
+    <ul v-bind:key="index" v-for="(city, index) in cities">
       <CitiesItem v-bind:city="city" />
     </ul>
   </div>
@@ -11,7 +11,7 @@
 import CitiesItem from './CitiesItem.vue'
 
 export default {
-  name: 'Cities',
+  name: 'CitiesList',
   components: {
     CitiesItem
   },

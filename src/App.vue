@@ -10,7 +10,7 @@
       </div>
 
       <div class="element">
-        <WeatherInfo/>
+        <WeatherInfo v-bind:city="selectedCity"/>
       </div>
 
     </div>
@@ -20,13 +20,15 @@
 <script>
 import CitiesList from './components/CitiesList.vue'
 import WeatherInfo from './components/WeatherInfo.vue'
+import { eventBus } from './main.js'
 
 export default {
   data(){
     return {
       cities: [],
       search: "",
-      selectedCity: []
+      selectedCity: null,
+      weatherOfCity: []
     }
   },
   name: 'app',
@@ -34,16 +36,26 @@ export default {
     CitiesList,
     WeatherInfo
   },
+  mounted(){
+    fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/44418`)
+    .then(res => res.json())
+    .then(city => this.selectedCity = city)
+
+    eventBus.$on('city-selected', (city) => {
+      this.selectedCity = city
+    })
+  },
   methods: {
     searchHandler() {
       if (this.search.length > 2){
         return fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${this.search}`)
         .then(res => res.json())
         .then(cities => this.cities = cities)
-      }else{
+      }else {
         return this.cities = []
       }
-    }
+    },
+
 
   }
 }
@@ -51,6 +63,11 @@ export default {
 </script>
 
 <style>
+  h1{
+    text-align: center;
+    margin: 20px auto 50px;
+  }
+
   #wrapper{
     display: flex;
     justify-content: space-evenly;
