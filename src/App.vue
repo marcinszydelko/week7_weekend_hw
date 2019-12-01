@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>WeatherApp</h1>
+    <input v-model="search" @input="searchHandler" type="text" placeholder="Search for city">
+    <CitiesList v-bind:cities="cities" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CitiesList from './components/CitiesList.vue'
 
 export default {
+  data(){
+    return {
+      cities: [],
+      search: ""
+    }
+  },
   name: 'app',
   components: {
-    HelloWorld
+    CitiesList
+  },
+  methods: {
+    searchHandler() {
+      if (this.search.length > 2){
+        return fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${this.search}`)
+        .then(res => res.json())
+        .then(cities => this.cities = cities)
+      }else{
+        return this.cities = []
+      }
+    }
+
   }
 }
+
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
