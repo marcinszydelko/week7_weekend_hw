@@ -1,13 +1,10 @@
 <template lang="html">
-  <div>
-    <li>{{city.title}}</li>
-  </div>
+  <h3>WeatherInfo</h3>
 </template>
 
 <script>
 export default {
-  name: "CitiesItem",
-  props: ["city"]
+  name: "WeatherInfo"
 }
 </script>
 

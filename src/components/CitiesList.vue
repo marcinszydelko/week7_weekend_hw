@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul v-bind:key="city.woeid" v-for="city in cities">
+    <ul @click="" v-bind:key="index" v-for="(city, index) in cities">
       <CitiesItem v-bind:city="city" />
     </ul>
   </div>

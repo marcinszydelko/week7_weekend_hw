@@ -1,24 +1,38 @@
 <template>
   <div id="app">
     <h1>WeatherApp</h1>
-    <input v-model="search" @input="searchHandler" type="text" placeholder="Search for city">
-    <CitiesList v-bind:cities="cities" />
+
+    <div id="wrapper">
+      <div class="element">
+        <label for="searchForCity">Search for city:</label><br>
+        <input v-model="search" @input="searchHandler" type="text" placeholder="type at least 3 letters" id="searchForCity" width="200">
+        <CitiesList v-bind:cities="cities" />
+      </div>
+
+      <div class="element">
+        <WeatherInfo/>
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script>
 import CitiesList from './components/CitiesList.vue'
+import WeatherInfo from './components/WeatherInfo.vue'
 
 export default {
   data(){
     return {
       cities: [],
-      search: ""
+      search: "",
+      selectedCity: []
     }
   },
   name: 'app',
   components: {
-    CitiesList
+    CitiesList,
+    WeatherInfo
   },
   methods: {
     searchHandler() {
@@ -37,5 +51,13 @@ export default {
 </script>
 
 <style>
+  #wrapper{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .element{
+    flex-direction: row;
+  }
 
 </style>
