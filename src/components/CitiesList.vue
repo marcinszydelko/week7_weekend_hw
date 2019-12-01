@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ul v-bind:key="index" v-for="(city, index) in cities">
-      <CitiesItem v-bind:city="city" />
+    <ul >
+      <CitiesItem v-bind:city="city" v-bind:key="index" v-for="(city, index) in cities"/>
     </ul>
   </div>
 
@@ -21,5 +21,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+  ul{
+    padding-left: 0;
+    text-align: center;
+    list-style: none;
+  }
 
 </style>

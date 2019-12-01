@@ -22,4 +22,11 @@ export default {
 </script>
 
 <style lang="css" scoped>
+li{
+  border: 1px solid black;
+  cursor: pointer;
+}
+li:hover{
+  background-color: #D3D3D3;
+}
 </style>
