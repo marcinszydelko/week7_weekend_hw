@@ -63,9 +63,14 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Solway&display=swap');
   h1{
+    font-family: 'Solway', serif;
     text-align: center;
-    margin: 20px auto 50px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 20px 0 40px;
+    background-color: #D4D4D4;
   }
 
   #wrapper{
@@ -75,6 +80,9 @@ export default {
 
   .element{
     flex-direction: row;
+  }
+  body{
+    margin: 0;
   }
 
 </style>

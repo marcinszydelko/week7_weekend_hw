@@ -10,7 +10,7 @@
       <div class="weather-readings" id="right-box">
         <p>Humidity: {{city.consolidated_weather[0].humidity}}%</p>
         <p>Wind direction:  {{city.consolidated_weather[0].wind_direction_compass}}</p>
-        <p>Wind: {{city.consolidated_weather[0].wind_speed.toFixed(2)}} mph</p>
+        <p>Wind: {{city.consolidated_weather[0].wind_speed.toFixed(0)}} mph</p>
       </div>
     </div>
     <div id="next-days">

@@ -27,6 +27,6 @@ li{
   cursor: pointer;
 }
 li:hover{
-  background-color: #D3D3D3;
+  background-color: #D4D4D4;
 }
 </style>
